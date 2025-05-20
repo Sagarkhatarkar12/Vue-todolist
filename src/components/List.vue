@@ -14,12 +14,20 @@ export default {
     },
    
     props:{
-        name:"item",
+  
       task:{
         type:Array,
         required:true,
         default:()=>[]
-      }  
+      } , 
+        deleteItem:{
+            type:Function,
+            required:true,
+        },
+        changeCheckBox:{
+            type:Function,
+            required :true
+        }
     },
     methods :{
 
@@ -32,14 +40,19 @@ export default {
 <!-- <h1>{{ message }}</h1> -->
 <ul>
     <!-- {{ console.log(task) }} -->
-    <h1>{{ task.length }}</h1>
+ 
 <!-- list item me loop insert karne per ye mulitiple time chalega jab tak puri value fetched na ho jaye -->
     <ListItem
     v-if="task.length > 0"
     v-for="item in task"
-    :item=item
-    :key = item.id
+ 
+    :id = item.id
+    :isComp = item.isComplete
     :text = item.text
+   :changeCheckBox = changeCheckBox
+    :deleteItem= deleteItem
+
+
 
 
     />

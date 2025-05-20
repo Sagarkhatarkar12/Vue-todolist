@@ -1,8 +1,9 @@
 <template>
 
 <div class="Search">
-    <input type="text">
-    <button id="SearchBtn" class="Search-btn"><i class="ri-search-line"></i></button>
+    <input type="text" v-bind ="inputValue" >
+    <!-- {{ alert(inputValue) }} -->
+    <button id="SearchBtn"@click = "addTask(inputValue)" class="Search-btn"><i class="ri-add-fill"></i></button>
 </div>
 </template>
 <script>
@@ -10,6 +11,12 @@ export default {
 data(){
     return {
         message:'Input message yhi banega '
+    }
+},
+props :{
+    addTask:{
+        type :Function,
+        requried:true
     }
 }
 }

@@ -20,17 +20,42 @@ return {
 }
 
 },
-props:{
-name:"task",
-// task:task
+
+
+methods:{
+
+ deleteItem(id){
+ this.task  = this.task.filter(item=>item.id !== id)
+  },
+  
+changeCheckBox(id){
+  const taskItem = this.task.find(t=>t.id === id);
+  // alert(taskItem)
+  console.log(taskItem)
+  if(taskItem.isComplete == true){
+   taskItem.isComplete = false
+}
+else{
+  taskItem.isComplete = true
+}
 
 },
-methods:{
-  writeText(){
-    this.newTodo = "Hii I am Sagu";
+addTask(inputValue){
+  this.task.push({id : this.task.length, text :inputValue, isComplete :false})
+}
+},
+
+
+computed:{
+  completeData(){
+ return this.task.filter(t=>t.isComplete==true)
+  },
+  renamingData(){
+return this .task.filter(t=>t.isComplete == false)
   }
 }
 };
+
 
 </script>
 
@@ -38,12 +63,18 @@ methods:{
  <div class="todolist">
   <h1>Todo List</h1>
   <!-- <h1>{{ task }}</h1> -->
-   <Form />
+   <Form :addTask  = addTask />
    <h1>Complete task</h1>
 
-    <List :task  = task />
+    <List :task  =completeData
+    :deleteItem = deleteItem 
+    :changeCheckBox = changeCheckBox  />
     <h1>Remaing task</h1>
-    <List/>
+    <List :task =renamingData
+     :deleteItem = deleteItem  
+     :changeCheckBox = changeCheckBox
+     
+     />
  </div>
  
 

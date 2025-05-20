@@ -1,10 +1,12 @@
 <template>
-    <!-- <h1>{{ item }}</h1> -->
+  
+
     <li class="item" >
 
-        <input type="checkbox" name="" id="">
-        <p class="item-para">{{ item.text}} </p>
-        <div class="icon"><i class="ri-close-large-line"></i></div>
+        <input type="checkbox" :checked="isComp" @change="changeCheckBox(id)" name="" id="">
+        <p class="item-para">{{ text }} </p>
+
+        <div class="icon" @click="deleteItem(id)"  ><i class="ri-close-large-line"></i></div>
     </li>
 </template>
 <script>
@@ -16,11 +18,33 @@ export default {
         }
     },
     props:{
-        item:{
-            type:Object,
-            required:true,
-            default :()=>{}
-        }
+    id:{
+        type:Number,
+        required:true,
+   
+      },
+      isComp :{
+        type:Boolean,
+        required:true
+      },
+      text:{
+        type:String,
+        required :true
+      },
+      deleteItem:{
+type:Function,
+required :true,
+      },
+
+changeCheckBox: {
+  type: Function,
+  required: true
+}
+        // item:{
+        //     type:,
+        //     required:true,
+        //     default :()=>({ text: '', isComp: false })
+        // }
     }
 }
 
