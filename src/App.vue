@@ -41,7 +41,9 @@ else{
 
 },
 addTask(inputValue){
-  this.task.push({id : this.task.length, text :inputValue, isComplete :false})
+  console.log(this.task.length+1)
+  this.task.push({id : (this.task.length+1), text :inputValue, isComplete :false})
+inputValue = ""
 }
 },
 

@@ -1,16 +1,18 @@
 <template>
 
 <div class="Search">
-    <input type="text" v-bind ="inputValue" >
+    <input type="text" v-model="inputValue" >
     <!-- {{ alert(inputValue) }} -->
     <button id="SearchBtn"@click = "addTask(inputValue)" class="Search-btn"><i class="ri-add-fill"></i></button>
+   
 </div>
 </template>
 <script>
 export default {
 data(){
     return {
-        message:'Input message yhi banega '
+        message:'Input message yhi banega ',
+        inputValue :""
     }
 },
 props :{
