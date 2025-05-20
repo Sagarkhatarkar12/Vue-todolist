@@ -7,11 +7,23 @@ export default {
     Form,
     List,
   },
+
+
   data(){
 return {
   // data part 
-  newTodo :"Hiii sagar khatarkar"
+  task:[
+    {id:1,text:"hii guys name jante hoge",isComplete:true},
+    {id:2,text:"Hello bhai  me jante hoge", isComplete:false},
+    {id:3,text:"hum nahi jaante toh ", isComplete:true}
+  ]
 }
+
+},
+props:{
+name:"task",
+// task:task
+
 },
 methods:{
   writeText(){
@@ -25,9 +37,11 @@ methods:{
 <template>
  <div class="todolist">
   <h1>Todo List</h1>
+  <!-- <h1>{{ task }}</h1> -->
    <Form />
    <h1>Complete task</h1>
-    <List/>
+
+    <List :task  = task />
     <h1>Remaing task</h1>
     <List/>
  </div>

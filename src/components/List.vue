@@ -12,6 +12,15 @@ export default {
       
     }
     },
+   
+    props:{
+        name:"item",
+      task:{
+        type:Array,
+        required:true,
+        default:()=>[]
+      }  
+    },
     methods :{
 
     }
@@ -22,8 +31,23 @@ export default {
 <template>
 <!-- <h1>{{ message }}</h1> -->
 <ul>
+    <!-- {{ console.log(task) }} -->
+    <h1>{{ task.length }}</h1>
+<!-- list item me loop insert karne per ye mulitiple time chalega jab tak puri value fetched na ho jaye -->
+    <ListItem
+    v-if="task.length > 0"
+    v-for="item in task"
+    :item=item
+    :key = item.id
+    :text = item.text
 
-    <ListItem/>
+
+    />
+    
+    <div v-else class="empty">
+<img src="../assets/folder.png" alt="">
+<p>No task</p>
+    </div>
   
 
 </ul>
@@ -34,5 +58,19 @@ ul{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+img{
+    height: 20rem;
+    width:  15.5rem;
+}
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 3rem;
+    color: white;
+
 }
 </style>

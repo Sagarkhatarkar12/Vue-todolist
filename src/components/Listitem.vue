@@ -1,14 +1,9 @@
 <template>
-    <li class="item">
+    <!-- <h1>{{ item }}</h1> -->
+    <li class="item" >
 
         <input type="checkbox" name="" id="">
-        <p class="item-para">{{ message }} </p>
-        <div class="icon"><i class="ri-close-large-line"></i></div>
-    </li>
-    <li class="item">
-
-        <input type="checkbox" name="" id="">
-        <p class="item-para">{{ message }} </p>
+        <p class="item-para">{{ item.text}} </p>
         <div class="icon"><i class="ri-close-large-line"></i></div>
     </li>
 </template>
@@ -17,7 +12,14 @@ export default {
 
     data() {
         return {
-            message: "Our Item "
+        
+        }
+    },
+    props:{
+        item:{
+            type:Object,
+            required:true,
+            default :()=>{}
         }
     }
 }
@@ -49,6 +51,7 @@ li {
 }
 
 p {
+font-weight: bold;
     text-align: center;
 }
 
