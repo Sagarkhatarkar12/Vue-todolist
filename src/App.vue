@@ -2,10 +2,16 @@
 import Form from './components/form.vue';
 import List from './components/List.vue';
 import Home from "./Pages/TodoForm.vue";
-import ListItem from "./Pages/TodoList.vue"
+import NoteFound from './Pages/NoteFound.vue';
+import ListItem from "./Pages/TodoList.vue";
+import ListI from "./Pages/TodoListItem.vue";
+
+
 const Routes = {
   '/': Home,
-  '/List':ListItem
+  '/List':ListItem,
+  '/ListItem':ListI
+  
 }
 
 export default {
@@ -59,18 +65,19 @@ export default {
     currentView(){
 return Routes[this.currentPath.slice(1)||'/'] ||NotFound
     },
-    mounted(){
-      window.addEventListener('hashchange',()=>{
-        this.currentPath = window.location.hash
-      })
-    },
+
     completeData() {
       return this.task.filter(t => t.isComplete == true)
     },
     renamingData() {
       return this.task.filter(t => t.isComplete == false)
     }
-  }
+  },
+      mounted(){
+      window.addEventListener('hashchange',()=>{
+        this.currentPath = window.location.hash
+      })
+    },
 };
 
 
