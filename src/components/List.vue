@@ -1,82 +1,75 @@
-
 <script>
-import ListItem from "./Listitem.vue"
+// import { store } from "../store/store";
+import { store } from "../store/store.js"
+import ListItem from "./ListItem.vue"
 
 export default {
-      components:{
-   ListItem,
-  },
-    data(){
-    return {
-        message :"List render here "
-      
-    }
+    components: {
+        ListItem,
     },
-   
-    props:{
-  
-      task:{
-        type:Array,
-        required:true,
-        default:()=>[]
-      } , 
-        deleteItem:{
-            type:Function,
-            required:true,
-        },
-        changeCheckBox:{
-            type:Function,
-            required :true
+    data() {
+        return {
+
         }
     },
-    methods :{
 
+    props: {
+        task: {
+            type: Array,
+            requried: true
+        },
+        checkBox: {
+            type: Function,
+            requried: true
+
+        },
+        deleteItem:{
+            type:Function,
+            requried:true
+        }
+    },
+    methods: {
+  
     }
+
 }
 
 </script>
 
 <template>
-<!-- <h1>{{ message }}</h1> -->
-<ul>
-    <!-- {{ console.log(task) }} -->
- 
-<!-- list item me loop insert karne per ye mulitiple time chalega jab tak puri value fetched na ho jaye -->
-    <ListItem
-    v-if="task.length > 0"
-    v-for="item in task"
- 
-    :id = item.id
-    :isComp = item.isComplete
-    :text = item.text
-   :changeCheckBox = changeCheckBox
-    :deleteItem= deleteItem
 
+    <ul>
 
+        <!-- {{ console.log(task) }} -->
 
+        <!-- list item me loop insert karne per ye mulitiple time chalega jab tak puri value fetched na ho jaye -->
 
-    />
-    
-    <div v-else class="empty">
-<img src="../assets/folder.png" alt="">
-<p>No task</p>
-    </div>
-  
+        <ListItem v-if="task.length > 0" v-for="item in task" :id=item.id :isComp=item.isComplete :text=item.text
+            :deleteItem=deleteItem
+            :checkBox=checkBox />
 
-</ul>
+        <div v-else class="empty">
+            <img src="../assets/folder.png" alt="">
+            <p>No task</p>
+        </div>
+
+    </ul>
+
 </template>
 
 <style>
-ul{
+ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-img{
+
+img {
     height: 20rem;
-    width:  15.5rem;
+    width: 15.5rem;
 }
-.empty{
+
+.empty {
     display: flex;
     justify-content: center;
     align-items: center;

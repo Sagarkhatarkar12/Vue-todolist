@@ -1,24 +1,31 @@
+
 <script>
-import List from "../components/List.vue"
+import List from '../components/List.vue';
 import{ store }from "../store/store.js"
-export default {
-    components: {
-        List
+export default{
+   components:{
+     List
+   },
+  data(){
+    return {
+    task :store.task
+
+    }
+  },
+  computed:{
+                   CompleteData() {
+      return store.task.filter(t => t.isComplete == true)
     },
-    data() {
-        return {
-            
-      
-        }
-    },
-    methods:{
-              deleteItem(id) {
+    
+  },
+  methods:{
+        deleteItem(id) {
             console.log("delete working..")
             console.log(id)
             // console.log(store.task.filter(item=>item.id != id))
             store.task = store.task.filter(item => item.id !== id)
         },
-           changeCheckBox(id) {
+     changeCheckBox(id) {
             console.log("checkBox")
             console.log(id)
 console.log(store.task)
@@ -29,23 +36,18 @@ console.log(store.task)
         return
       }
      store.task[Index].isComplete = !store.task[Index].isComplete;
-     console.log(store.task)
+    
 
     },
-    },
-    computed: {
-        RenamingData() {
-            return store.task.filter(t => t.isComplete == false)
-        },
-        
-    },
-  
+  }
 }
+
 </script>
 <template>
-    <!-- <h1>Hellow</h1> -->
-    <List :task=RenamingData
-    :checkBox = changeCheckBox
-    :deleteItem=deleteItem />
+ 
+<List :task = CompleteData 
+:checkBox = changeCheckBox
+:deleteItem=deleteItem  />
 </template>
-<style></style>
+<style>
+</style>

@@ -1,34 +1,27 @@
 <script>
-import Form from './components/form.vue';
-import List from './components/List.vue';
 import Home from "./Pages/TodoForm.vue";
-import NoteFound from './Pages/NoteFound.vue';
+import NotFound from './Pages/NoteFound.vue';
 import ListItem from "./Pages/TodoList.vue";
-import ListI from "./Pages/TodoListItem.vue";
+import ListI from "./Pages/CompleteTask.vue";
 
 
 const Routes = {
   '/': Home,
   '/List':ListItem,
-  '/ListItem':ListI
+  '/CompleteTask':ListI
   
 }
 
 export default {
   components: {
-    Form,
-    List,
+
   },
 
 
   data() {
     return {
       // data part 
-      task:[
-    {id:1,text:"hii guys name jante hoge",isComplete:true},
-    {id:2,text:"Hello bhai  me jante hoge", isComplete:false},
-    {id:3,text:"hum nahi jaante toh ", isComplete:true}
-  ],
+     
    currentPath: window.location.hash,
      
     
@@ -40,43 +33,22 @@ export default {
 
   methods: {
 
-    deleteItem(id) {
-      this.task = this.task.filter(item => item.id !== id)
-    },
 
-    changeCheckBox(id) {
-      console.log("id" + id)
-
-      const Index = this.task.findIndex(t => t.id === id);
-      // alert(taskItem)
-
-
-
-      if (Index === -1) {
-        return
-      }
-      this.task[Index].isComplete = !this.task[Index].isComplete;
-
-    },
-    addTask(inputValue) {
-
-      this.task.push({ id: (this.task.length + 1), text: inputValue, isComplete: false })
-      inputValue = ""
-    }
+ 
   },
 
 
   computed: {
-    currentView(){
-return Routes[this.currentPath.slice(1)||'/'] ||NotFound
-    },
 
-    completeData() {
-      return this.task.filter(t => t.isComplete == true)
+
+   currentView(){
+return Routes[this.currentPath.slice(1)||'/'] || NotFound
     },
-    renamingData() {
-      return this.task.filter(t => t.isComplete == false)
-    }
+  },
+  methods:{
+     
+
+
   },
       mounted(){
       window.addEventListener('hashchange',()=>{
@@ -93,13 +65,16 @@ return Routes[this.currentPath.slice(1)||'/'] ||NotFound
 
   <nav>
     <a href="#/">Home</a>
-    <a href="#/List">LIst</a>
-    <a href="#/ListItem">ListItem</a>
+    <a href="#/List">List</a>
+    <a href="#/CompleteTask">CompleteTask</a>
   </nav>
   <div class="todolist">
  <h1>Our todo App</h1>
   
     <component :is = currentView />
+    <footer>
+    <h2>&copy; copyright by DSB</h2>
+    </footer>
   </div>
 
 
@@ -112,6 +87,19 @@ return Routes[this.currentPath.slice(1)||'/'] ||NotFound
   box-sizing: border-box;
   font-family: sans-serif;
   font-size: 62.5%;
+}
+
+footer h2{
+    font-size: 2rem;
+  margin: 10rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  color: white;
+  background-color: blue;
+  /* color: white; */
 }
 
 .todolist {
@@ -134,6 +122,7 @@ h1 {
 
   background-color: #799b44;
   padding: 1rem;
+
   color: white;
   border-radius: 1rem;
 }

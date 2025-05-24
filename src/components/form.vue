@@ -1,40 +1,40 @@
 <template>
 
-<div class="Search">
-    <input type="text" v-model="inputValue" >
-    <!-- {{ alert(inputValue) }} -->
-    <button id="SearchBtn"@click = "addTask(inputValue)" class="Search-btn"><i class="ri-add-fill"></i></button>
-   
-</div>
+    <div class="Search">
+        <input type="text" v-model="inputValue">
+        <!-- {{ alert(inputValue) }} -->
+        <button id="SearchBtn" @click="addTask(inputValue)" class="Search-btn"><i class="ri-add-fill"></i></button>
+
+    </div>
 </template>
 <script>
+import {store} from "../store/store.js"
 export default {
-data(){
-    return {
-        message:'Input message yhi banega ',
-        inputValue :""
+    data() {
+        return {
+          inputValue : ""
+        }
+    },
+    props: {
+        addTask: {
+            type: Function,
+            required: true
+        }
     }
-},
-props :{
-    addTask:{
-        type :Function,
-        requried:true
-    }
-}
 }
 </script>
 <style>
-
-.Search{
+.Search {
     display: flex;
     height: 4rem;
     border: 1px solid black;
     overflow: hidden;
     border-radius: 1rem;
     /* width: rem; */
-    
+
 }
-.Search-btn{
+
+.Search-btn {
 
     border: none;
     cursor: pointer;
@@ -50,6 +50,7 @@ props :{
     font-size: 3rem;
     font-weight: bold;
 }
+
 input {
     height: 100%;
     border: none;
@@ -60,7 +61,8 @@ input {
     /* border: none; */
 
 }
-input:focus{
+
+input:focus {
     /* border: none; */
     outline: none;
 }
