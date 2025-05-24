@@ -1,25 +1,26 @@
-<script>
-import { store } from "../store/store.js"
-import Form from "../components/form.vue"
+<script setup>
+import {  PositionChange } from "../store/task.js";
+import Form from "../components/form.vue";
 
-export default {
-    components:{
-        Form
-    },
-    methods:{
-        
-    addTask(inputValue) {
 
-      store.task.push({ id: (store.task.length + 1), text: inputValue, isComplete: false })
-      inputValue = ""
-    }
-    }
-}
+
+    const tasks = PositionChange(); 
+    
+    const addTask = tasks.addTask;
+
+
+  
+ 
+
+   
+
+// const tasks =  PositionChange();
+
 
 </script>
 <template>
 <Form
-:addTask=addTask />
+:addTask= "addTask" />
 
 </template>
 <style>

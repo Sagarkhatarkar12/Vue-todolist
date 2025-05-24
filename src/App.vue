@@ -92,6 +92,7 @@ return Routes[this.currentPath.slice(1)||'/'] || NotFound
 footer h2{
     font-size: 2rem;
   margin: 10rem 0rem;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

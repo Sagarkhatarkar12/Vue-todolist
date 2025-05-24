@@ -1,53 +1,34 @@
 
-<script>
+<script setup>
+import { computed } from 'vue';
 import List from '../components/List.vue';
+import { PositionChange } from '@/store/task';
 import{ store }from "../store/store.js"
-export default{
-   components:{
-     List
-   },
-  data(){
-    return {
-    task :store.task
+const tasks= PositionChange();
 
-    }
-  },
-  computed:{
-                   CompleteData() {
-      return store.task.filter(t => t.isComplete == true)
-    },
-    
-  },
-  methods:{
-        deleteItem(id) {
-            console.log("delete working..")
-            console.log(id)
-            // console.log(store.task.filter(item=>item.id != id))
-            store.task = store.task.filter(item => item.id !== id)
-        },
-     changeCheckBox(id) {
-            console.log("checkBox")
-            console.log(id)
-console.log(store.task)
-      const Index = store.task.findIndex(t => t.id === id);
-      console.log(Index)
+
+
+
+  
+                  const  CompleteData =computed (()=>{
+return tasks.task.filter(t => t.isComplete == true)
+                   }) 
+      
    
-      if (Index === -1) {
-        return
-      }
-     store.task[Index].isComplete = !store.task[Index].isComplete;
     
 
-    },
-  }
-}
+ 
+       
+     
+
+
 
 </script>
 <template>
  
 <List :task = CompleteData 
-:checkBox = changeCheckBox
-:deleteItem=deleteItem  />
+:checkBox = tasks.changeCheckBox
+:deleteItem=tasks.deleteItem />
 </template>
 <style>
 </style>
