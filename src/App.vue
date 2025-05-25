@@ -13,9 +13,7 @@ const Routes = {
 }
 
 export default {
-  components: {
 
-  },
 
 
   data() {
@@ -64,14 +62,14 @@ return Routes[this.currentPath.slice(1)||'/'] || NotFound
 <template>
 
   <nav>
-    <a href="#/">Home</a>
-    <a href="#/List">List</a>
-    <a href="#/CompleteTask">CompleteTask</a>
+      <router-link to="/">Home</router-link> 
+      <router-link to="/List">About</router-link> 
+      <router-link to="/CompleteTask">Contact</router-link>
   </nav>
   <div class="todolist">
  <h1>Our todo App</h1>
   
-    <component :is = currentView />
+    <router-view /> 
     <footer>
     <h2>&copy; copyright by DSB</h2>
     </footer>
