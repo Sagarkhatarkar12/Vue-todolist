@@ -10,7 +10,12 @@ import post from "../Pages/post.vue"
 
 const routes = [{
     path: '/',
-    component: Home
+    components: {
+        default:Home,
+        profile:profile,
+        post:post
+    }
+
 },
 {
     path: '/List',
@@ -23,7 +28,7 @@ const routes = [{
 {
     path: '/Dynamic/:id',
     component: Dynamic,
-    children: [
+ children:  [
         {
             path: 'profile',
             component: profile
@@ -35,8 +40,10 @@ const routes = [{
     ]
 
 },
+
+
 {
-    path: '/:pathMatch(.*)',
+    path: '/:pathMatch(.*)*',
     component: NoteFound
 }
 ]
@@ -46,4 +53,5 @@ const router = createRouter({
     routes,
 
 })
+
 export default router

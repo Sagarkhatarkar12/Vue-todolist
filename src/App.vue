@@ -34,11 +34,10 @@ export default {
 
 
   },
-  mounted() {
-    window.addEventListener('hashchange', () => {
-      this.currentPath = window.location.hash
-    })
-  },
+
+
+
+
 };
 
 
@@ -49,14 +48,16 @@ export default {
 
   <nav>
     <router-link to="/">Home</router-link>
-    <router-link to="/List">About</router-link>
-    <router-link to="/CompleteTask">Contact</router-link>
+    <router-link to="/List">List</router-link>
+    <router-link to="/CompleteTask">CompleteTask</router-link>
     <router-link to="/Dynamic">Dynamic</router-link>
   </nav>
   <div class="todolist">
     <h1>Our todo App</h1>
 
     <router-view />
+    <router-view name="profile" />
+  <h1><router-view name ="post"/></h1> 
     <footer>
       <h2>&copy; copyright by DSB</h2>
 

@@ -44,7 +44,7 @@ export default {
 
         <!-- list item me loop insert karne per ye mulitiple time chalega jab tak puri value fetched na ho jaye -->
 
-        <ListItem v-if="task.length > 0" v-for="item in task" :id=item.id :isComp=item.isComplete :text=item.text
+        <ListItem v-if="task.length > 0" v-for="item in task":key = item.id :id=item.id :isComp=item.isComplete :text=item.text
             :deleteItem=deleteItem
             :checkBox=checkBox />
 
