@@ -5,12 +5,7 @@ import ListItem from "./Pages/TodoList.vue";
 import ListI from "./Pages/CompleteTask.vue";
 
 
-const Routes = {
-  '/': Home,
-  '/List':ListItem,
-  '/CompleteTask':ListI
-  
-}
+
 
 export default {
 
@@ -19,40 +14,31 @@ export default {
   data() {
     return {
       // data part 
-     
-   currentPath: window.location.hash,
-     
-    
+
+      currentPath: window.location.hash,
+
+
     }
 
 
   },
-
-
-  methods: {
-
-
- 
-  },
-
-
   computed: {
 
 
-   currentView(){
-return Routes[this.currentPath.slice(1)||'/'] || NotFound
+    currentView() {
+      return Routes[this.currentPath.slice(1) || '/'] || NotFound
     },
   },
-  methods:{
-     
+  methods: {
+
 
 
   },
-      mounted(){
-      window.addEventListener('hashchange',()=>{
-        this.currentPath = window.location.hash
-      })
-    },
+  mounted() {
+    window.addEventListener('hashchange', () => {
+      this.currentPath = window.location.hash
+    })
+  },
 };
 
 
@@ -62,16 +48,18 @@ return Routes[this.currentPath.slice(1)||'/'] || NotFound
 <template>
 
   <nav>
-      <router-link to="/">Home</router-link> 
-      <router-link to="/List">About</router-link> 
-      <router-link to="/CompleteTask">Contact</router-link>
+    <router-link to="/">Home</router-link>
+    <router-link to="/List">About</router-link>
+    <router-link to="/CompleteTask">Contact</router-link>
+    <router-link to="/Dynamic">Dynamic</router-link>
   </nav>
   <div class="todolist">
- <h1>Our todo App</h1>
-  
-    <router-view /> 
+    <h1>Our todo App</h1>
+
+    <router-view />
     <footer>
-    <h2>&copy; copyright by DSB</h2>
+      <h2>&copy; copyright by DSB</h2>
+
     </footer>
   </div>
 
@@ -87,8 +75,8 @@ return Routes[this.currentPath.slice(1)||'/'] || NotFound
   font-size: 62.5%;
 }
 
-footer h2{
-    font-size: 2rem;
+footer h2 {
+  font-size: 2rem;
   margin: 10rem 0rem;
   width: 100vw;
   display: flex;
@@ -125,7 +113,8 @@ h1 {
   color: white;
   border-radius: 1rem;
 }
-nav{
+
+nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +125,8 @@ nav{
   font-size: 3rem;
   gap: 3rem;
 }
-nav a{
+
+nav a {
   text-decoration: none;
   color: white;
 }
