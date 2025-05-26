@@ -12,8 +12,8 @@ const routes = [{
     path: '/',
     components: {
         default:Home,
-        profile:profile,
-        post:post
+        // profile:profile,
+        // post:post
     }
 
 },
