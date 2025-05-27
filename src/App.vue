@@ -15,7 +15,7 @@ export default {
     return {
       // data part 
 
-      currentPath: window.location.hash,
+      // currentPath: window.location.hash,
 
 
     }
@@ -25,9 +25,7 @@ export default {
   computed: {
 
 
-    currentView() {
-      return Routes[this.currentPath.slice(1) || '/'] || NotFound
-    },
+  
   },
   methods: {
 
@@ -55,9 +53,13 @@ export default {
   <div class="todolist">
     <h1>Our todo App</h1>
 
-    <router-view />
-    <router-view name="profile" />
-  <h1><router-view name ="post"/></h1> 
+<router-view v-slot="{ Component }">
+  <transition name="fade">
+    <component :is="Component" />
+  </transition>
+</router-view>
+    <!-- <router-view name="profile" /> -->
+  <!-- <h1><router-view name ="post"/></h1>  -->
     <footer>
       <h2>&copy; copyright by DSB</h2>
 
@@ -130,5 +132,15 @@ nav {
 nav a {
   text-decoration: none;
   color: white;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  /* transform: translateY("-20rem"); */
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
 }
 </style>

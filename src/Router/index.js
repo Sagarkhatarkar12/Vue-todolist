@@ -10,8 +10,10 @@ import post from "../Pages/post.vue"
 
 const routes = [{
     path: '/',
+    
     components: {
         default:Home,
+
         // profile:profile,
         // post:post
     }
